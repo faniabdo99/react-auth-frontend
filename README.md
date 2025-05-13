@@ -1,54 +1,89 @@
-# React + TypeScript + Vite
+# Auth Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive authentication frontend application built with React, TypeScript, and Vite. This application provides a clean and user-friendly interface for user authentication, including login and registration functionality.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 User Authentication (Login/Register)
+- 🎨 Modern UI with Tailwind CSS
+- 📱 Responsive Design
+- 🔄 Session Management
+- 🚀 Built with Vite for optimal performance
+- 🎯 TypeScript for type safety
+- 🎨 Toast Notifications for user feedback
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- React Hook Form
+- Axios
+- React Toastify
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm or yarn
+
+## Getting Started
+
+1. Clone the repository:
+```bash
+git clone [your-repository-url]
+cd auth-frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
 ```
+
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Available Scripts
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build the application for production
+- `npm run lint` - Run ESLint to check code quality
+- `npm run preview` - Preview the production build locally
+
+## Project Structure
+
+```
+src/
+├── assets/         # Static assets
+├── components/     # Reusable React components
+├── hooks/         # Custom React hooks
+├── pages/         # Page components
+├── types/         # TypeScript type definitions
+├── App.tsx        # Main application component
+├── main.tsx       # Application entry point
+└── index.css      # Global styles
+```
+
+## Features in Detail
+
+### Authentication
+- Login functionality with email/password
+- Registration system
+- Session management using JWT tokens
+- Secure token storage in session storage
+
+### UI/UX
+- Clean and modern interface
+- Responsive design for all screen sizes
+- Toast notifications for user feedback
+- Smooth transitions and animations
+- Loading states and error handling
