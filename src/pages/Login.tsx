@@ -43,14 +43,19 @@ export default function Login() {
         axios.post(import.meta.env.VITE_API_URL + '/auth/login', data)
             .then((response: AxiosResponse<LoginType>) => {
                 toast.success('Login successful! Redirecting to homepage...');
-                // Delete previous tokens
-                localStorage.removeItem('token');
-                localStorage.removeItem('refresh_token');
-                localStorage.removeItem('user');
-                // Decode token and save to local storage
-                localStorage.setItem('token', response.data.access_token);
-                localStorage.setItem('refresh_token', response.data.refresh_token);
-                localStorage.setItem('user', JSON.stringify(response.data.user));
+                // Delete previous tokens and user data
+                sessionStorage.removeItem('token');
+                sessionStorage.removeItem('refresh_token');
+                sessionStorage.removeItem('user');
+                // Store tokens and user data in sessionStorage instead of localStorage for better security
+                sessionStorage.setItem('token', response.data.access_token);
+                sessionStorage.setItem('refresh_token', response.data.refresh_token);
+                // Only store minimal necessary user info
+                const userData = {
+                    email: response.data.user.email,
+                    id: response.data.user.id
+                };
+                sessionStorage.setItem('user', JSON.stringify(userData));
 
                 setTimeout(() => {
                     navigate('/');

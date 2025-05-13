@@ -13,9 +13,9 @@ function App() {
           <div className="flex flex-col items-center justify-center">
             <h2 className="text-2xl font-light text-slate-800 mb-10 text-center tracking-wide">Welcome, {user.email}</h2>
             <button className="bg-red-500 text-white px-4 py-2 rounded-md" onClick={() => {
-              localStorage.removeItem('token');
-              localStorage.removeItem('refresh_token');
-              localStorage.removeItem('user');
+              sessionStorage.removeItem('token');
+              sessionStorage.removeItem('refresh_token');
+              sessionStorage.removeItem('user');
               window.location.reload();
             }}>Logout</button>
           </div>
