@@ -1,17 +1,42 @@
+/**
+ * Login Page Component
+ * 
+ * This component renders a login form with email and password inputs.
+ * It handles form validation, user authentication, and redirects after successful login.
+ * 
+ * Features:
+ * - Email and password validation using react-hook-form
+ * - API integration with axios for login requests
+ * - Toast notifications for success/error feedback
+ * - Local storage management for auth tokens and user data
+ * - Responsive layout with decorative side panel on larger screens
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <Login />
+ * ```
+ */
+
 import { useState } from 'react'
 import Input from '../components/Input'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import type { LoginType } from '../types/LoginType';
-import type { AxiosError, AxiosResponse } from 'axios';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import type { LoginType } from '../types/LoginType'
+import type { AxiosError, AxiosResponse } from 'axios'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 export default function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginType>();
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+
+    /**
+     * Handles the login form submission
+     * 
+     * @param {LoginType} data - The form data containing email and password
+     */
     const onLoginSubmit: SubmitHandler<LoginType> = (data) => {
         setIsLoading(true);
         // Send the request to the backend

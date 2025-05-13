@@ -1,16 +1,45 @@
+/**
+ * Register Page Component
+ * 
+ * This component renders a registration form with name, email and password inputs.
+ * It handles form validation, user registration, and redirects after successful account creation.
+ * 
+ * Features:
+ * - Name, email and password validation using react-hook-form
+ * - API integration with axios for registration requests
+ * - Toast notifications for success/error feedback
+ * - Responsive layout with decorative side panel on larger screens
+ * - Password strength requirements enforcement
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <Register />
+ * ```
+ */
+
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import Input from '../components/Input'
-import { useForm, type SubmitHandler } from 'react-hook-form';
-import type { RegisterType } from '../types/RegisterType';
-import axios, { type AxiosError } from 'axios';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import { useForm, type SubmitHandler } from 'react-hook-form'
+import type { RegisterType } from '../types/RegisterType'
+import axios, { type AxiosError } from 'axios'
+import { toast } from 'react-toastify'
 
 export default function Register() {
     const { register, handleSubmit, formState: { errors } } = useForm<RegisterType>();
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+
+    /**
+     * Handles the registration form submission
+     * 
+     * Makes an API call to register the user and handles success/error responses
+     * On success, redirects to login page after showing success message
+     * On error, displays appropriate error message to user
+     * 
+     * @param {RegisterType} data - The form data containing name, email and password
+     */
     const onRegisterSubmit: SubmitHandler<RegisterType> = (data) => {
         setIsLoading(true);
         // Send the request to the backend
